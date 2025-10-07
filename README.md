@@ -119,61 +119,45 @@ const result = generateSchema(
 )
 /*
   {
-    type: 'object',
-    properties: {
-      customer: {
-        type: 'object',
-        properties: {
-          id: {
-            type: 'integer',
-            example: 17,
-            examples: [17],
+    "type": "object",
+    "properties": {
+      "customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 17,
+            "examples": [
+              17
+            ]
           },
-          name: {
-            type: 'string',
-            example: 'John Doe',
-            examples: ['John Doe'],
+          "name": {
+            "type": "string",
+            "example": "John Doe",
+            "examples": [
+              "John Doe"
+            ]
           },
-          email: {
-            type: 'string',
-            example: 'john@example.com',
-            examples: ['john@example.com'],
-          },
+          "email": {
+            "type": "string",
+            "example": "john@example.com",
+            "examples": [
+              "john@example.com"
+            ]
+          }
         },
-        required: ['id', 'name', 'email'],
-        additionalProperties: false,
-        example: {
-          id: 17,
-          name: 'John Doe',
-          email: 'john@example.com',
-        },
-        examples: [
-          {
-            id: 17,
-            name: 'John Doe',
-            email: 'john@example.com',
-          },
+        "required": [
+          "id",
+          "name",
+          "email"
         ],
-      },
+        "additionalProperties": false
+      }
     },
-    required: ['customer'],
-    additionalProperties: false,
-    example: {
-      customer: {
-        id: 17,
-        name: 'John Doe',
-        email: 'john@example.com',
-      },
-    },
-    examples: [
-      {
-        customer: {
-          id: 17,
-          name: 'John Doe',
-          email: 'john@example.com',
-        },
-      },
+    "required": [
+      "customer"
     ],
+    "additionalProperties": false
   }
 */
 ```
