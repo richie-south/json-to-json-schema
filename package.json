@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/richie-south/json-to-json-schema.git"
   },
-  "keywords": [],
+  "keywords": [
+    "json schema",
+    "json"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
