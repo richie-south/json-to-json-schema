@@ -281,4 +281,403 @@ describe('generateSchema', () => {
       },
     })
   })
+
+  it('generates complex with example schema', () => {
+    const result = generateSchema(
+      {
+        orderId: 'A1009',
+        customer: {
+          id: 17,
+          name: 'John Doe',
+          email: 'john@example.com',
+        },
+        items: [
+          {
+            productId: 123,
+            name: 'Laptop',
+            price: 999.99,
+            quantity: 1,
+          },
+          {
+            productId: 456,
+            name: 'Mouse',
+            price: 19.99,
+            quantity: 2,
+          },
+        ],
+        total: 1039.97,
+        paid: true,
+        shippedAt: null,
+      },
+      {
+        setExample: true,
+      },
+    )
+
+    expect(result).toEqual({
+      type: 'object',
+      properties: {
+        orderId: {
+          type: 'string',
+          example: 'A1009',
+          examples: ['A1009'],
+        },
+        customer: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              example: 17,
+              examples: [17],
+            },
+            name: {
+              type: 'string',
+              example: 'John Doe',
+              examples: ['John Doe'],
+            },
+            email: {
+              type: 'string',
+              example: 'john@example.com',
+              examples: ['john@example.com'],
+            },
+          },
+          example: {
+            id: 17,
+            name: 'John Doe',
+            email: 'john@example.com',
+          },
+          examples: [
+            {
+              id: 17,
+              name: 'John Doe',
+              email: 'john@example.com',
+            },
+          ],
+        },
+        items: {
+          type: 'array',
+        },
+        total: {
+          type: 'number',
+          example: 1039.97,
+          examples: [1039.97],
+        },
+        paid: {
+          type: 'boolean',
+          example: true,
+          examples: [true],
+        },
+        shippedAt: {
+          type: 'null',
+          example: null,
+          examples: [null],
+        },
+      },
+      example: {
+        orderId: 'A1009',
+        customer: {
+          id: 17,
+          name: 'John Doe',
+          email: 'john@example.com',
+        },
+        items: [
+          {
+            productId: 123,
+            name: 'Laptop',
+            price: 999.99,
+            quantity: 1,
+          },
+          {
+            productId: 456,
+            name: 'Mouse',
+            price: 19.99,
+            quantity: 2,
+          },
+        ],
+        total: 1039.97,
+        paid: true,
+        shippedAt: null,
+      },
+      examples: [
+        {
+          orderId: 'A1009',
+          customer: {
+            id: 17,
+            name: 'John Doe',
+            email: 'john@example.com',
+          },
+          items: [
+            {
+              productId: 123,
+              name: 'Laptop',
+              price: 999.99,
+              quantity: 1,
+            },
+            {
+              productId: 456,
+              name: 'Mouse',
+              price: 19.99,
+              quantity: 2,
+            },
+          ],
+          total: 1039.97,
+          paid: true,
+          shippedAt: null,
+        },
+      ],
+    })
+  })
+
+  it('generates complex with required schema', () => {
+    const result = generateSchema(
+      {
+        orderId: 'A1009',
+        customer: {
+          id: 17,
+          name: 'John Doe',
+          email: 'john@example.com',
+        },
+        items: [
+          {
+            productId: 123,
+            name: 'Laptop',
+            price: 999.99,
+            quantity: 1,
+          },
+          {
+            productId: 456,
+            name: 'Mouse',
+            price: 19.99,
+            quantity: 2,
+          },
+        ],
+        total: 1039.97,
+        paid: true,
+        shippedAt: null,
+      },
+      {
+        setRequired: true,
+      },
+    )
+
+    expect(result).toEqual({
+      type: 'object',
+      properties: {
+        orderId: {
+          type: 'string',
+        },
+        customer: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+            },
+            name: {
+              type: 'string',
+            },
+            email: {
+              type: 'string',
+            },
+          },
+          required: ['id', 'name', 'email'],
+        },
+        items: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              productId: {
+                type: 'integer',
+              },
+              name: {
+                type: 'string',
+              },
+              price: {
+                type: 'number',
+              },
+              quantity: {
+                type: 'integer',
+              },
+            },
+            required: ['productId', 'name', 'price', 'quantity'],
+          },
+        },
+        total: {
+          type: 'number',
+        },
+        paid: {
+          type: 'boolean',
+        },
+        shippedAt: {
+          type: 'null',
+        },
+      },
+      required: ['orderId', 'customer', 'items', 'total', 'paid', 'shippedAt'],
+    })
+  })
+
+  it('generates complex with additionalProperties schema', () => {
+    const result = generateSchema(
+      {
+        orderId: 'A1009',
+        customer: {
+          id: 17,
+          name: 'John Doe',
+          email: 'john@example.com',
+        },
+        items: [
+          {
+            productId: 123,
+            name: 'Laptop',
+            price: 999.99,
+            quantity: 1,
+          },
+          {
+            productId: 456,
+            name: 'Mouse',
+            price: 19.99,
+            quantity: 2,
+          },
+        ],
+        total: 1039.97,
+        paid: true,
+        shippedAt: null,
+      },
+      {
+        setAdditionalProperties: true,
+        additionalProperties: true,
+      },
+    )
+
+    expect(result).toEqual({
+      type: 'object',
+      properties: {
+        orderId: {
+          type: 'string',
+        },
+        customer: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+            },
+            name: {
+              type: 'string',
+            },
+            email: {
+              type: 'string',
+            },
+          },
+          additionalProperties: true,
+        },
+        items: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              productId: {
+                type: 'integer',
+              },
+              name: {
+                type: 'string',
+              },
+              price: {
+                type: 'number',
+              },
+              quantity: {
+                type: 'integer',
+              },
+            },
+            additionalProperties: true,
+          },
+        },
+        total: {
+          type: 'number',
+        },
+        paid: {
+          type: 'boolean',
+        },
+        shippedAt: {
+          type: 'null',
+        },
+      },
+      additionalProperties: true,
+    })
+  })
+
+  it('generates with all options schema', () => {
+    const result = generateSchema(
+      {
+        customer: {
+          id: 17,
+          name: 'John Doe',
+          email: 'john@example.com',
+        },
+      },
+      {
+        setExample: true,
+        setRequired: true,
+        setAdditionalProperties: true,
+        additionalProperties: false,
+      },
+    )
+
+    expect(result).toEqual({
+      type: 'object',
+      properties: {
+        customer: {
+          type: 'object',
+          properties: {
+            id: {
+              type: 'integer',
+              example: 17,
+              examples: [17],
+            },
+            name: {
+              type: 'string',
+              example: 'John Doe',
+              examples: ['John Doe'],
+            },
+            email: {
+              type: 'string',
+              example: 'john@example.com',
+              examples: ['john@example.com'],
+            },
+          },
+          required: ['id', 'name', 'email'],
+          additionalProperties: false,
+          example: {
+            id: 17,
+            name: 'John Doe',
+            email: 'john@example.com',
+          },
+          examples: [
+            {
+              id: 17,
+              name: 'John Doe',
+              email: 'john@example.com',
+            },
+          ],
+        },
+      },
+      required: ['customer'],
+      additionalProperties: false,
+      example: {
+        customer: {
+          id: 17,
+          name: 'John Doe',
+          email: 'john@example.com',
+        },
+      },
+      examples: [
+        {
+          customer: {
+            id: 17,
+            name: 'John Doe',
+            email: 'john@example.com',
+          },
+        },
+      ],
+    })
+  })
 })
