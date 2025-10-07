@@ -341,18 +341,6 @@ describe('generateSchema', () => {
               examples: ['john@example.com'],
             },
           },
-          example: {
-            id: 17,
-            name: 'John Doe',
-            email: 'john@example.com',
-          },
-          examples: [
-            {
-              id: 17,
-              name: 'John Doe',
-              email: 'john@example.com',
-            },
-          ],
         },
         items: {
           type: 'array',
@@ -373,58 +361,6 @@ describe('generateSchema', () => {
           examples: [null],
         },
       },
-      example: {
-        orderId: 'A1009',
-        customer: {
-          id: 17,
-          name: 'John Doe',
-          email: 'john@example.com',
-        },
-        items: [
-          {
-            productId: 123,
-            name: 'Laptop',
-            price: 999.99,
-            quantity: 1,
-          },
-          {
-            productId: 456,
-            name: 'Mouse',
-            price: 19.99,
-            quantity: 2,
-          },
-        ],
-        total: 1039.97,
-        paid: true,
-        shippedAt: null,
-      },
-      examples: [
-        {
-          orderId: 'A1009',
-          customer: {
-            id: 17,
-            name: 'John Doe',
-            email: 'john@example.com',
-          },
-          items: [
-            {
-              productId: 123,
-              name: 'Laptop',
-              price: 999.99,
-              quantity: 1,
-            },
-            {
-              productId: 456,
-              name: 'Mouse',
-              price: 19.99,
-              quantity: 2,
-            },
-          ],
-          total: 1039.97,
-          paid: true,
-          shippedAt: null,
-        },
-      ],
     })
   })
 
@@ -646,38 +582,10 @@ describe('generateSchema', () => {
           },
           required: ['id', 'name', 'email'],
           additionalProperties: false,
-          example: {
-            id: 17,
-            name: 'John Doe',
-            email: 'john@example.com',
-          },
-          examples: [
-            {
-              id: 17,
-              name: 'John Doe',
-              email: 'john@example.com',
-            },
-          ],
         },
       },
       required: ['customer'],
       additionalProperties: false,
-      example: {
-        customer: {
-          id: 17,
-          name: 'John Doe',
-          email: 'john@example.com',
-        },
-      },
-      examples: [
-        {
-          customer: {
-            id: 17,
-            name: 'John Doe',
-            email: 'john@example.com',
-          },
-        },
-      ],
     })
   })
 })

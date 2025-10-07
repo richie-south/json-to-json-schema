@@ -60,7 +60,15 @@ function addProperties(data: any, value: unknown, options: Options) {
   }
 
   if (options.setExample) {
-    data = addExample(data, value)
+    switch (data.type) {
+      case 'object':
+        if (!data.properties) {
+          data = addExample(data, value)
+        }
+        break
+      default:
+        data = addExample(data, value)
+    }
   }
 
   return data
