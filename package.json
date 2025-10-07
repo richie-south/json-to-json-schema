@@ -1,0 +1,30 @@
+{
+  "name": "easy-json-to-json-schema",
+  "version": "0.0.1",
+  "main": "./lib/index.js",
+  "module": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "description": "A basic json to json schema",
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc & jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richie-south/json-to-json-schema.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richie-south/json-to-json-schema/issues"
+  },
+  "homepage": "https://github.com/richie-south/json-to-json-schema#readme",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.4",
+    "typescript": "^5.9.3"
+  }
+}
