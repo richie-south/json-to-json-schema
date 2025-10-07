@@ -1,3 +1,4 @@
+import {Schema} from './types'
 import {deepEqual} from './util'
 
 type Options = {
@@ -23,17 +24,17 @@ function addExample(data: object, value: unknown) {
   return data
 }
 
-function addRequired(data: object, keys: string[]) {
+function addRequired(data: Schema, keys: string[]): Schema {
   data['required'] = keys
   return data
 }
 
-function addAdditionalProperties(data: object, value: boolean) {
+function addAdditionalProperties(data: Schema, value: boolean): Schema {
   data['additionalProperties'] = value
   return data
 }
 
-function addProperties(data: any, value: unknown, options: Options) {
+function addProperties(data: Schema, value: unknown, options: Options): Schema {
   if (options.setRequired) {
     switch (data.type) {
       case 'array':
@@ -74,7 +75,20 @@ function addProperties(data: any, value: unknown, options: Options) {
   return data
 }
 
-export function generateSchema(value, options: Options = defaultOptions) {
+export function generateSchema(
+  value:
+    | null
+    | boolean
+    | string
+    | number
+    | object
+    | Array<string>
+    | Array<number>
+    | Array<object>
+    | Array<null>
+    | Array<boolean>,
+  options: Options = defaultOptions,
+): Schema {
   const typeOfValue = typeof value
 
   switch (typeOfValue) {
