@@ -19,7 +19,7 @@
     "json"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/richie-south/json-to-json-schema/issues"
   },
